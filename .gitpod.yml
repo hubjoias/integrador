@@ -1,0 +1,15 @@
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  - port: 8000
+    onOpen: open-preview
+
+tasks:
+  - init: |
+      composer create-project laravel/laravel .
+      composer install
+      cp .env.example .env
+      php artisan key:generate
+    command: |
+      php artisan serve
